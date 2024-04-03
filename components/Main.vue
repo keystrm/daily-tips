@@ -14,7 +14,7 @@
             </template>
 
             <p class="text-gray-500 dark:text-gray-400">
-                Can I still push
+                Can I still push, is it okay even now?
             </p>
 
         </UCard>
