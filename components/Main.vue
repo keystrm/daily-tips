@@ -14,7 +14,7 @@
             </template>
 
             <p class="text-gray-500 dark:text-gray-400">
-                Try your components here!
+                Can I still push
             </p>
 
         </UCard>
