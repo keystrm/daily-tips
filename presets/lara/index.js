@@ -41,6 +41,7 @@ import treetable from './treetable';
 import timeline from './timeline';
 import accordion from './accordion';
 import card from './card';
+import deferred from './deferred';
 import divider from './divider';
 import fieldset from './fieldset';
 import panel from './panel';
@@ -135,6 +136,7 @@ export default {
     timeline,
     accordion,
     card,
+    deferred,
     divider,
     fieldset,
     panel,

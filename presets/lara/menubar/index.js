@@ -11,11 +11,11 @@ export default {
             'p-2',
 
             // Shape
-            // 'rounded-md',
+            'rounded-md',
 
             // Color
-            'bg-surface-50 dark:bg-surface-main-dark',
-            'border-surface-200 dark:border-surface-700'
+            'bg-surface-50 dark:bg-surface-700',
+            'border border-surface-200 dark:border-surface-700'
         ]
     },
     menu: ({ props }) => ({
@@ -44,8 +44,8 @@ export default {
             'shadow-md sm:shadow-none',
             'border-0',
 
-            // Color this was changed : keystrm
-            'bg-transparent dark:bg-transparent sm:bg-transparent',
+            // Color
+            'bg-surface-0 dark:bg-surface-700 sm:bg-transparent',
 
             // Misc
             'outline-none'
