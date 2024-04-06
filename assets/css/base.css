@@ -1,25 +1,28 @@
 :root {
-  --primary-50: 236 253 245;
-  --primary-100: 209 250 229;
-  --primary-200: 167 243 208;
-  --primary-300: 110 231 183;
-  --primary-400: 52 211 153;
-  --primary-500: 16 185 129;
-  --primary-600: 5 150 105;
-  --primary-700: 4 120 87;
-  --primary-800: 6 95 70;
-  --primary-900: 4 78 56;
-  --primary-950: 2 44 34;
-  --surface-0: 255 255 255;
-  --surface-50: 249 250 251;
-  --surface-100: 243 244 246;
-  --surface-200: 229 231 235;
-  --surface-300: 209 213 219;
-  --surface-400: 156 163 175;
-  --surface-500: 107 114 128;
-  --surface-600: 75 85 99;
-  --surface-700: 55 65 81;
-  --surface-800: 31 41 55;
-  --surface-900: 17 24 39;
-  --surface-950: 8 8 8;
+  /* Primary Color Palette */
+  --primary-50: 235 245 255; /* Lightest blue for subtle backgrounds */
+  --primary-100: 207 233 252; /* Light blue for background elements */
+  --primary-200: 179 221 249; /* Soft blue for inactive states dropdowns */
+  --primary-300: 151 209 246; /* Clear blue for hover states borders */
+  --primary-400: 123 197 243; /* Brighter blue for buttons icons */
+  --primary-500: 95 185 240; /* Standard blue for primary actions */
+  --primary-600: 67 173 237; /* Deeper blue for emphasis active states */
+  --primary-700: 39 161 234; /* Dark blue for important text icons */
+  --primary-800: 11 149 231; /* Darker blue for critical interactive elements */
+  --primary-900: 0 137 228; /* Deepest blue for key accents links */
+  --primary-950: 0 125 225; /* Near navy blue for strong emphasis footer */
+
+  /* Surface Color Palette */
+  --surface-0: 255 255 255; /* Pure white for light mode background */
+  --surface-50: 250 250 250; /* Very light gray for subtle differentiation */
+  --surface-100: 245 245 245; /* Light gray for card modal backgrounds */
+  --surface-200: 238 238 238; /* Soft gray for UI elements inactive states */
+  --surface-300: 224 224 224; /* Medium gray for lines borders */
+  --surface-400: 210 210 210; /* Neutral gray for secondary text */
+  --surface-500: 160 160 160; /* Dark gray for text primary icons */
+  --surface-600: 128 128 128; /* Darker gray for focused elements text */
+  --surface-700: 96 96 96; /* Almost black for dark mode text elements */
+  --surface-800: 64 64 64; /* Dark for dark mode backgrounds UI elements */
+  --surface-900: 32 32 32; /* Very dark for dark mode elevation depth */
+  --surface-950: 15 15 15; /* Near black for dark mode deep backgrounds */
 }
