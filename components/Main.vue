@@ -13,7 +13,7 @@
         <!-- Placeholder for Color mode switch -->
         <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow flex justify-between items-center">
             <p class="text-gray-900 dark:text-gray-100">Color mode switch</p>
-            <ButtonColorModeSwitcher/>
+            <ColorModeSwitch/>
         </div>
 
         <!-- Main content -->

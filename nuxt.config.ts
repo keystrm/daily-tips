@@ -4,6 +4,7 @@ import path from "path";
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode", "nuxt-primevue"],
+  css:['~/assets/css/base.css','primeicons/primeicons.css'],
   primevue: {
     options: {
       unstyled: true,
