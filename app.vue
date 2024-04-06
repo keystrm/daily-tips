@@ -1,8 +1,8 @@
 <template>
   <NuxtLayout>
     <div class="md:max-w-2xl">
-      <div class="flex flex-col md:flex-row gap-2 my-3 md:justify-end">
-        <Button icon="pi pi-filter" aria-label="Filter" @click="filterVisible = !filterVisible"/>
+      <div class="flex flex-row gap-2 my-3 justify-end">
+        <Button icon="pi pi-filter" aria-label="Filter" @click="filterVisible = !filterVisible" />
         <ColorModeSwitch />
       </div>
       <div class="">
@@ -12,7 +12,7 @@
 
   </NuxtLayout>
 
-  <FilterDialog v-model="filterVisible"/>
+  <FilterDialog v-model="filterVisible" />
 </template>
 
 <script setup lang="ts">
