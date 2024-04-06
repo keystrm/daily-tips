@@ -24,6 +24,7 @@
             </div>
           </template>
         </Dropdown>
+        <Calendar v-model="buttondisplay" showIcon />
         <ColorModeSwitch />
       </div>
       <Card>
@@ -44,6 +45,7 @@
 
 <script setup lang="ts">
 const selectedCountry = ref();
+const buttondisplay = ref();
 const countries = ref([
     { name: 'Australia', code: 'AU' },
     { name: 'Brazil', code: 'BR' },
