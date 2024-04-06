@@ -1,0 +1,28 @@
+:root {
+  /* Primary Color Palette */
+  --primary-50: 235 245 255; /* Lightest blue for subtle backgrounds */
+  --primary-100: 207 233 252; /* Light blue for background elements */
+  --primary-200: 179 221 249; /* Soft blue for inactive states dropdowns */
+  --primary-300: 151 209 246; /* Clear blue for hover states borders */
+  --primary-400: 123 197 243; /* Brighter blue for buttons icons */
+  --primary-500: 95 185 240; /* Standard blue for primary actions */
+  --primary-600: 67 173 237; /* Deeper blue for emphasis active states */
+  --primary-700: 39 161 234; /* Dark blue for important text icons */
+  --primary-800: 11 149 231; /* Darker blue for critical interactive elements */
+  --primary-900: 0 137 228; /* Deepest blue for key accents links */
+  --primary-950: 0 125 225; /* Near navy blue for strong emphasis footer */
+
+  /* Surface Color Palette */
+  --surface-0: 255 255 255; /* Pure white for light mode background */
+  --surface-50: 250 250 250; /* Very light gray for subtle differentiation */
+  --surface-100: 245 245 245; /* Light gray for card modal backgrounds */
+  --surface-200: 238 238 238; /* Soft gray for UI elements inactive states */
+  --surface-300: 224 224 224; /* Medium gray for lines borders */
+  --surface-400: 210 210 210; /* Neutral gray for secondary text */
+  --surface-500: 160 160 160; /* Dark gray for text primary icons */
+  --surface-600: 128 128 128; /* Darker gray for focused elements text */
+  --surface-700: 96 96 96; /* Almost black for dark mode text elements */
+  --surface-800: 64 64 64; /* Dark for dark mode backgrounds UI elements */
+  --surface-900: 32 32 32; /* Very dark for dark mode elevation depth */
+  --surface-950: 15 15 15; /* Near black for dark mode deep backgrounds */
+}
