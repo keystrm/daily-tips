@@ -28,6 +28,10 @@
             </template>
         </Dropdown>
         <Calendar v-model="buttondisplay" showIcon />
+        <template #footer>
+            <Button label="Cancel" text severity="secondary" @click="visible = false" autofocus />
+            <Button label="Apply" outlined severity="secondary" @click="visible = false" autofocus />
+        </template>
 
     </Dialog>
 </template>
