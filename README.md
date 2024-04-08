@@ -24,7 +24,7 @@ Welcome to the Daily Learning Tips App! This open-source project aims to help in
    ```
 2. Navigate to the project directory:
    ```bash
-   cd daily-learning-tips-app
+   cd dail-tips
    ```
 3. Install dependencies:
    ```bash
