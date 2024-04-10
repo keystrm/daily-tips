@@ -1,6 +1,6 @@
 <template>
     <div class="flex">
-        <Button icon="pi pi-arrow-left"/>
+        <SlideButton icon="pi pi-arrow-left"/>
         <Card>
             <template #title> Simple Card </template>
             <template #content>
@@ -14,7 +14,7 @@
                 </p>
             </template>
         </Card>
-        <Button icon="pi pi-arrow-right"/>
+        <SlideButton icon="pi pi-arrow-right"/>
 
     </div>
 </template>
