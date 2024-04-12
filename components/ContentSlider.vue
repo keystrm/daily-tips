@@ -4,7 +4,7 @@
         <Card>
             <template #title> Simple Card </template>
             <template #content>
-                <ContentDoc />
+                <slot></slot>
             </template>
         </Card>
         <SlideButton icon="pi pi-arrow-right"/>

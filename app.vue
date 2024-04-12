@@ -6,7 +6,9 @@
         <ColorModeSwitch />
       </div>
       <div class="flex flex-1 mb-4 max-h-[1000px]">
-        <ContentSlider />
+        <ContentSlider>
+          <NuxtPage/>
+        </ContentSlider>
       </div>
     </div>
 
