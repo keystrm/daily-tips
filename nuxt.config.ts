@@ -56,4 +56,7 @@ export default defineNuxtConfig({
       darkMode: "class",
     },
   },
+  content: {
+    watch: false
+  }
 });
