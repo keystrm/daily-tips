@@ -3,7 +3,12 @@ import path from "path";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode", "nuxt-primevue"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/color-mode",
+    "nuxt-primevue",
+    "@nuxt/content",
+  ],
   css:['~/assets/css/base.css','primeicons/primeicons.css'],
   primevue: {
     options: {
