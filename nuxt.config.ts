@@ -56,4 +56,10 @@ export default defineNuxtConfig({
       darkMode: "class",
     },
   },
+  content: {
+    watch: false,
+    highlight:{
+      theme:"github-dark"
+    }
+  }
 });
