@@ -10,4 +10,21 @@
     </nav>
 </template>
 <script setup>
+const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
+console.log('navigation', navigation.value)
+const { data } = await useAsyncData('page', () => queryContent('/').findOne())
+
+const {
+  navBottomLink,
+  navDirFromPath,
+  navPageFromPath,
+  navKeyFromPath
+} = useContentHelpers()
+const route = useRoute()
+
+const bottomPath = navBottomLink(navigation.value)
+const dir = navDirFromPath(route.path, navigation.value)
+const page = navPageFromPath(route.path, navigation.value)
+const layout = navKeyFromPath(route.path, 'layout', navigation.value)
+
 </script>
