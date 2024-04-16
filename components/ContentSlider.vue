@@ -2,7 +2,7 @@
     <div class="flex">
         <SlideButton icon="pi pi-arrow-left" @click="previousNote"/>
         <Card>
-            <template #title> Simple Card </template>
+            <template #title> {{ currentNav?.title }} </template>
             <template #content>
                 <slot></slot>
             </template>
@@ -22,6 +22,34 @@ import type { NavItem } from '@nuxt/content/types';
 
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 const route = useRoute()
+
+const navigationList = computed(() => {
+  const result: NavComponent[] = [];
+  const uniquePaths = new Set<string>();
+
+  function addItems(items: NavItem[]) {
+    items.forEach(item => {
+      const itemKey = `${item.title}|${item._path}`;
+      if (!uniquePaths.has(itemKey)) {
+        result.push({ title: item.title, _path: item._path });
+        uniquePaths.add(itemKey);
+      }
+      if (item.children && item.children.length > 0) {
+        addItems(item.children);
+      }
+    });
+  }
+
+  if (navigation.value) {
+    addItems(navigation.value);
+  }
+  
+  return result;
+});
+
+const currentNav = computed(()=>{
+    return navigationList.value.find((item)=>item._path===route.path)
+})
 
 const flattenArray = (data: NavItem[]): NavComponent[] =>{
     let result: NavComponent[] = [];
