@@ -38,6 +38,22 @@ const flattenArray = (data: NavItem[]): { title: string; _path: string; }[] =>{
     return result;
 }
 
+const getNextIndex = (flatArray: { title: string; _path: string; }[], currentPath: string): number | null =>{
+    const currentIndex = flatArray.findIndex(item => item._path === currentPath);
+    if (currentIndex === -1 || currentIndex + 1 >= flatArray.length) {
+        return null;
+    }
+    return currentIndex + 1;
+}
+
+const getPreviousIndex = (flatArray: { title: string; _path: string; }[], currentPath: string): number | null =>{
+    const currentIndex = flatArray.findIndex(item => item._path === currentPath);
+    if (currentIndex === -1 || currentIndex - 1 < 0) {
+        return null;
+    }
+    return currentIndex - 1;
+}
+
 const nextNote = () => {
     if(navigation.value){
         const articleList = flattenArray(navigation.value)
