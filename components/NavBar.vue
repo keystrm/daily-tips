@@ -11,7 +11,6 @@
 </template>
 <script setup>
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
-console.log('navigation', navigation.value)
 const { data } = await useAsyncData('page', () => queryContent('/').findOne())
 
 const {
