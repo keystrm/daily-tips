@@ -13,13 +13,18 @@
 </template>
 
 <script setup lang="ts">
+interface NavComponent {
+    title: string,
+    _path: string
+}
+
 import type { NavItem } from '@nuxt/content/types';
 
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 const route = useRoute()
 
-const flattenArray = (data: NavItem[]): { title: string; _path: string; }[] =>{
-    let result: { title: string; _path: string; }[] = [];
+const flattenArray = (data: NavItem[]): NavComponent[] =>{
+    let result: NavComponent[] = [];
     let uniquePaths = new Set<string>();
 
     function addItems(items: NavItem[]) {
@@ -39,7 +44,7 @@ const flattenArray = (data: NavItem[]): { title: string; _path: string; }[] =>{
     return result;
 }
 
-const getNextNode = (flatArray: { title: string; _path: string; }[], currentPath: string): { title: string; _path: string; } | null =>{
+const getNextNode = (flatArray: NavComponent[], currentPath: string): NavComponent | null =>{
     const currentIndex = flatArray.findIndex(item => item._path === currentPath);
     if (currentIndex === -1 || currentIndex + 1 >= flatArray.length) {
         return null;
@@ -47,7 +52,7 @@ const getNextNode = (flatArray: { title: string; _path: string; }[], currentPath
     return flatArray[currentIndex + 1];
 }
 
-const getPreviousNode = (flatArray: { title: string; _path: string; }[], currentPath: string): { title: string; _path: string; } | null =>{
+const getPreviousNode = (flatArray: NavComponent[], currentPath: string): NavComponent | null =>{
     const currentIndex = flatArray.findIndex(item => item._path === currentPath);
     if (currentIndex === -1 || currentIndex - 1 < 0) {
         return null;
