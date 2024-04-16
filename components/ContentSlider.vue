@@ -1,13 +1,13 @@
 <template>
     <div class="flex">
-        <SlideButton icon="pi pi-arrow-left" @click="previousNote"/>
+        <SlideButton icon="pi pi-arrow-left" @click="navigate('previous')"/>
         <Card>
             <template #title> {{ currentNav?.title }} </template>
             <template #content>
                 <slot></slot>
             </template>
         </Card>
-        <SlideButton icon="pi pi-arrow-right" @click="nextNote"/>
+        <SlideButton icon="pi pi-arrow-right" @click="navigate('next')"/>
 
     </div>
 </template>
@@ -50,7 +50,21 @@ const navigationList = computed(() => {
 const currentNav = computed(()=>{
     return navigationList.value.find((item)=>item._path===route.path)
 })
+const currentNavIndex = computed(()=>{
+    return navigationList.value.findIndex((item)=>item._path===route.path)
+})
 
+const navigate = (direction :'next'|'previous'):void => {
+    if(currentNavIndex.value && currentNavIndex.value !== -1){
+        if(direction === 'next' && currentNavIndex.value+1 < navigationList.value.length){
+            console.log(navigationList.value)
+            navigateTo(navigationList.value[currentNavIndex.value+1]._path)
+        }
+        else if(direction === 'previous' && currentNavIndex.value - 1 >= 0){
+            navigateTo(navigationList.value[currentNavIndex.value -1]._path)
+        }
+    }
+}
 const flattenArray = (data: NavItem[]): NavComponent[] =>{
     let result: NavComponent[] = [];
     let uniquePaths = new Set<string>();
