@@ -19,14 +19,22 @@ const { data: navigation } = await useAsyncData('navigation', () => fetchContent
 
 const flattenArray = (data: NavItem[]): { title: string; _path: string; }[] =>{
     let result: { title: string; _path: string; }[] = [];
+    let uniquePaths = new Set<string>();
 
-    data.forEach(item => {
-        result.push({ title: item.title, _path: item._path });
-        if (item.children && item.children.length > 0) {
-            result = result.concat(flattenArray(item.children));
-        }
-    });
+    function addItems(items: NavItem[]) {
+        items.forEach(item => {
+            const itemKey = `${item.title}|${item._path}`;
+            if (!uniquePaths.has(itemKey)) {
+                result.push({ title: item.title, _path: item._path });
+                uniquePaths.add(itemKey);
+            }
+            if (item.children && item.children.length > 0) {
+                addItems(item.children);
+            }
+        });
+    }
 
+    addItems(data);
     return result;
 }
 
