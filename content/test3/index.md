@@ -48,17 +48,19 @@ You can add links and images like this:
 [OpenAI](https://www.openai.com)
 ![Image](https://nuxt.com/assets/design-kit/icon-green.png)
 
+---
+
 ## Code
 
 To display code, you can use backticks for inline code or triple backticks for blocks:
 
-\`\`\`markdown
 `inline code`
-\`\`\`
 
-\`\`\`\`
-block code
-\`\`\`\`
+```BASH
+npm run dev
+```
+
+---
 
 ## Tables
 
@@ -69,13 +71,14 @@ Creating simple tables:
 | Row 1    | Data     |
 | Row 2    | Data     |
 
+---
 ## Blockquotes
 
 For quoting text:
 
 > This is a blockquote.
 
-
+---
 ## Extended Syntax (not supported everywhere)
 
 Some Markdown extensions support additional features like task lists, footnotes, etc.
