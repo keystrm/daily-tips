@@ -3,6 +3,8 @@
 
 This document provides an overview of various Markdown syntax elements and how to use them.
 
+---
+
 ## Headers
 
 Markdown supports six levels of headers, created by adding `#` symbols before your header text:
@@ -14,26 +16,30 @@ Markdown supports six levels of headers, created by adding `#` symbols before yo
 ##### Header 5
 ###### Header 6
 
+---
+
 ## Emphasis
 
 You can make text **bold** or *italic*:
 
-\`\`\`markdown
 **bold**
 *italic*
-\`\`\`
+
+---
 
 ## Lists
 
 Markdown allows you to create ordered and unordered lists:
 
+#### Ordered List
 1. First item
 2. Second item
 
----
-
+#### Un-ordered List
 - Bullet item
 - Another item
+
+---
 
 ## Links and Images
 
