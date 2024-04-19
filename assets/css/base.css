@@ -41,6 +41,10 @@ tbody {
 td {
   @apply px-6 py-4 whitespace-nowrap;
 }
+.dark td {
+  @apply text-surface-500;
+}
+
 blockquote {
   @apply p-4 italic border-l-4 bg-gray-100 text-gray-600 border-gray-500;
 }
