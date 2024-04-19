@@ -1,11 +1,11 @@
 <template>
   <NuxtLayout>
-    <div class="md:max-w-2xl flex flex-col justify-center">
+    <div class="md:max-w-2xl flex flex-col h-100 justify-center overflow-hidden">
       <div class="flex flex-row gap-2 my-3 justify-end">
         <Button icon="pi pi-filter" aria-label="Filter" @click="filterVisible = !filterVisible" />
         <ColorModeSwitch />
       </div>
-      <div class="flex flex-1 mb-4 max-h-[1000px]">
+      <div class="flex flex-1 mb-4 overflow-hidden">
         <ContentSlider>
           <NuxtPage/>
         </ContentSlider>

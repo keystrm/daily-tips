@@ -1,15 +1,12 @@
 <template>
-    <div class="flex">
-        <SlideButton icon="pi pi-arrow-left" @click="navigate('previous')" />
-        <Card>
-            <template #title> {{ currentNav?.title }} </template>
-            <template #content>
-                <slot></slot>
-            </template>
-        </Card>
-        <SlideButton icon="pi pi-arrow-right" @click="navigate('next')" />
-
-    </div>
+    <SlideButton icon="pi pi-arrow-left" @click="navigate('previous')" />
+    <Card class="overflow-y-auto">
+        <template #title> {{ currentNav?.title }} </template>
+        <template #content>
+            <slot></slot>
+        </template>
+    </Card>
+    <SlideButton icon="pi pi-arrow-right" @click="navigate('next')" />
 </template>
 
 <script setup lang="ts">
