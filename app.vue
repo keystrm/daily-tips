@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout>
-    <div class="md:max-w-2xl flex flex-col h-100 justify-center overflow-hidden">
+    <div class="md:max-w-2xl flex flex-col h-100 justify-center">
       <div class="flex flex-row gap-2 my-3 justify-end">
         <Button icon="pi pi-filter" aria-label="Filter" @click="filterVisible = !filterVisible" />
         <ColorModeSwitch />
