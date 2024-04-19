@@ -1,7 +1,7 @@
 
 # Markdown Guide
 
-This document provides an overview of various Markdown syntax elements and how to use them.
+This document provides an overview of various Markdown syntax elements and how to use them.💁👌🎍😍
 
 ---
 
