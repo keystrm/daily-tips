@@ -42,7 +42,7 @@
   & td {
     @apply px-6 py-4 whitespace-nowrap;
   }
-  & .dark td {
+  .dark & td {
     @apply text-surface-500;
   }
   
