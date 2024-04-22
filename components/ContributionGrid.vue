@@ -97,7 +97,7 @@ const getColorClass = (value) => {
         "days squares";
       grid-template-columns: auto 1fr;
       grid-gap: 10px;
-      padding: 20px;
+      padding: 20px !important;
     }
 
     .months {
