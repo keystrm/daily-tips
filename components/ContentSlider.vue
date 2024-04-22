@@ -1,6 +1,6 @@
 <template>
     <SlideButton icon="pi pi-arrow-left" @click="navigate('previous')" />
-    <Card class="overflow-y-auto">
+    <Card class="overflow-y-auto" pt:body:class="mark-down">
         <template #title> {{ currentNav?.title }} </template>
         <template #content>
             <slot></slot>
