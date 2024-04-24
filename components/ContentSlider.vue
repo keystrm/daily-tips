@@ -40,7 +40,6 @@ const navigationList = computed(() => {
     if (navigation.value) {
         addItems(navigation.value);
     }
-
     return result;
 });
 
