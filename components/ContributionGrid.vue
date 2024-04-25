@@ -25,7 +25,7 @@
         </ul>
         <ul class="squares non-style">
             <!-- added via javascript -->
-            <li :data-level="Math.floor(Math.random() * 3)" v-for="i in 365"></li>
+            <li :class="getColorClass(Math.floor(Math.random() * 31))" v-for="i in 365"></li>
         </ul>
     </div>
 </template>
@@ -138,22 +138,7 @@ const getColorClass = (value) => {
     .days li:nth-child(odd) {
       visibility: hidden;
     }
-
-    .squares li {
-      background-color: #ebedf0;
-    }
-
-    .squares li[data-level="1"] {
-      background-color: #c6e48b;
-    }
-
-    .squares li[data-level="2"] {
-      background-color: #7bc96f;
-    }
-
-    .squares li[data-level="3"] {
-      background-color: #196127;
-    }
+    
     .non-style{
         list-style-type: none;
     }
