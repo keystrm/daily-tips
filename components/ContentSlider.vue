@@ -20,19 +20,24 @@ import type { NavItem } from '@nuxt/content/types';
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 const route = useRoute()
 
-const navigationList = computed(() => {
-    const result: NavComponent[] = [];
-    const uniquePaths = new Set<string>();
+const includeParents = ref(false);
 
-    function addItems(items: NavItem[]) {
+const navigationList = computed(() => {
+    const result:NavComponent[] = [];
+    const uniquePaths = new Set();
+
+    function addItems(items:NavItem[], isChild = false) {
         items.forEach(item => {
             const itemKey = `${item.title}|${item._path}`;
             if (!uniquePaths.has(itemKey)) {
-                result.push({ title: item.title, _path: item._path });
+                // Conditionally add item based on the flag and whether it's a child node
+                if (includeParents.value || isChild) {
+                    result.push({ title: item.title, _path: item._path });
+                }
                 uniquePaths.add(itemKey);
             }
             if (item.children && item.children.length > 0) {
-                addItems(item.children);
+                addItems(item.children, true);
             }
         });
     }
@@ -40,6 +45,7 @@ const navigationList = computed(() => {
     if (navigation.value) {
         addItems(navigation.value);
     }
+
     return result;
 });
 
