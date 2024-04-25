@@ -20,19 +20,24 @@ import type { NavItem } from '@nuxt/content/types';
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 const route = useRoute()
 
+const includeParents = ref(false);
+
 const navigationList = computed(() => {
     const result: NavComponent[] = [];
-    const uniquePaths = new Set<string>();
+    const uniquePaths = new Set();
 
-    function addItems(items: NavItem[]) {
+    function addItems(items: NavItem[], isChild = false) {
         items.forEach(item => {
             const itemKey = `${item.title}|${item._path}`;
             if (!uniquePaths.has(itemKey)) {
-                result.push({ title: item.title, _path: item._path });
+                // Conditionally add item based on the flag and whether it's a child node
+                if (item._path === "/" || includeParents.value || isChild) {
+                    result.push({ title: item.title, _path: item._path });
+                }
                 uniquePaths.add(itemKey);
             }
             if (item.children && item.children.length > 0) {
-                addItems(item.children);
+                addItems(item.children, true);
             }
         });
     }
@@ -40,7 +45,6 @@ const navigationList = computed(() => {
     if (navigation.value) {
         addItems(navigation.value);
     }
-
     return result;
 });
 
@@ -52,6 +56,7 @@ const currentNavIndex = computed(() => {
 })
 
 const navigate = (direction: 'next' | 'previous'): void => {
+
     if (currentNavIndex.value !== -1) {
         if (direction === 'next' && currentNavIndex.value + 1 < navigationList.value.length) {
             navigateTo(navigationList.value[currentNavIndex.value + 1]._path)
