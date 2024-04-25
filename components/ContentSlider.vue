@@ -23,15 +23,15 @@ const route = useRoute()
 const includeParents = ref(false);
 
 const navigationList = computed(() => {
-    const result:NavComponent[] = [];
+    const result: NavComponent[] = [];
     const uniquePaths = new Set();
 
-    function addItems(items:NavItem[], isChild = false) {
+    function addItems(items: NavItem[], isChild = false) {
         items.forEach(item => {
             const itemKey = `${item.title}|${item._path}`;
             if (!uniquePaths.has(itemKey)) {
                 // Conditionally add item based on the flag and whether it's a child node
-                if (item._path === "/"||includeParents.value || isChild) {
+                if (item._path === "/" || includeParents.value || isChild) {
                     result.push({ title: item.title, _path: item._path });
                 }
                 uniquePaths.add(itemKey);
@@ -45,8 +45,6 @@ const navigationList = computed(() => {
     if (navigation.value) {
         addItems(navigation.value);
     }
-    console.log(result)
-
     return result;
 });
 
@@ -58,7 +56,7 @@ const currentNavIndex = computed(() => {
 })
 
 const navigate = (direction: 'next' | 'previous'): void => {
-    console.log(currentNavIndex.value)
+
     if (currentNavIndex.value !== -1) {
         if (direction === 'next' && currentNavIndex.value + 1 < navigationList.value.length) {
             navigateTo(navigationList.value[currentNavIndex.value + 1]._path)
