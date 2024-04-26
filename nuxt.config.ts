@@ -65,7 +65,7 @@ export default defineNuxtConfig({
       theme:"github-dark"
     },
     navigation: {
-      fields: ['author', 'publishedAt']
+      fields: ['author', 'publishedAt','category']
     }
   }
 });
