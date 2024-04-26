@@ -1,7 +1,8 @@
 ---
-title: Markdown Guide
+title: 'Markdown Guide'
 author: 'Kasun Madushan'
-publishedAt: '15-06-2022'
+category: 'Tech'
+publishedAt: '24-04-2024'
 ---
 
 # Markdown Guide

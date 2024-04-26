@@ -1,3 +1,9 @@
+---
+title:  'Banana Bread Recipe'
+author: 'author1'
+category: 'Life style'
+publishedAt: '22-04-2024'
+---
 # Banana Bread Recipe
 
 Enjoy this simple and delicious banana bread recipe that is perfect for breakfast or as a snack.

@@ -1,3 +1,10 @@
+---
+title: 'Book Review'
+author: 'author2'
+category: 'Life style'
+publishedAt: '02-04-2024'
+---
+
 # Book Review: "The Great Gatsby" by F. Scott Fitzgerald
 
 "The Great Gatsby" is a profound reflection on the American Dream and its failures, set in the roaring twenties. Fitzgerald's writing captures an era of excess, betrayal, and lost love.
