@@ -12,7 +12,10 @@
 <script setup lang="ts">
 interface NavComponent {
     title: string,
-    _path: string
+    _path: string,
+    author?:string,
+    category?:string,
+    publishedAt?:string
 }
 
 import type { NavItem } from '@nuxt/content/types';
