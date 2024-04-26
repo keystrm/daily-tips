@@ -1,3 +1,10 @@
+---
+title: Paris Travel
+author: 'author2'
+category: 'Travel'
+publishedAt: '02-04-2024'
+---
+
 # Paris Travel Itinerary
 
 Explore the beauty and history of Paris with this simple three-day itinerary designed to help you experience some of the most iconic sights and attractions.
