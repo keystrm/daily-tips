@@ -1,5 +1,5 @@
 ---
-title: Book Review
+title: 'Book Review'
 author: 'author2'
 category: 'Life style'
 publishedAt: '02-04-2024'

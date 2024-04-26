@@ -1,5 +1,5 @@
 ---
-title: Paris Travel
+title: 'Paris Travel'
 author: 'author2'
 category: 'Travel'
 publishedAt: '02-04-2024'

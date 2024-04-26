@@ -1,5 +1,5 @@
 ---
-title: Markdown Guide
+title: 'Markdown Guide'
 author: 'Kasun Madushan'
 category: 'Tech'
 publishedAt: '24-04-2024'
