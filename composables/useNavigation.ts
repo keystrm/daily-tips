@@ -1,3 +1,5 @@
+import type { RouteLocationNormalizedLoaded } from "vue-router";
+
 interface NavComponent {
     title: string;
     _path: string;
@@ -13,10 +15,9 @@ interface FilterOptions {
     date?: string | null;
 }
 
-export async function useNavigation(filterOptions:FilterOptions = { author: null, category: null, date: null }) {
+export async function useNavigation(filterOptions:FilterOptions = { author: null, category: null, date: null },route:RouteLocationNormalizedLoaded) {
 
     const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
-    const route = useRoute()
 
     const includeParents = ref(false);
 
