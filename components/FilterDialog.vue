@@ -55,7 +55,7 @@
 
         <template #footer>
             <Button label="Cancel" text severity="secondary" @click="visible = false" autofocus />
-            <Button label="Apply" outlined severity="secondary" @click="visible = false" autofocus />
+            <Button label="Apply" outlined severity="secondary" @click="submitFilters" autofocus />
         </template>
 
     </Dialog>
@@ -68,20 +68,24 @@ const selectedCategory = ref();
 const selectedAuthors = ref();
 const publishedAt = ref();
 
-const filters:ComputedRef<FilterOptions> = computed(()=>{
-    return{
-        author:selectedAuthors.value?.name??null,
-        category:selectedCategory.value?.name??null,
-        date:publishedAt.value??null
+const filters: ComputedRef<FilterOptions> = computed(() => {
+    return {
+        author: selectedAuthors.value?.name ?? null,
+        category: selectedCategory.value?.name ?? null,
+        date: publishedAt.value ?? null
     }
 })
-watch(filters,()=>{
-    filterOptions.value = filters.value
-})
+
 const route = useRoute()
-const { authors, categories,filterOptions,navigate, currentNav } = await useNavigation(route)
+const { authors, categories, filterOptions, navigationList } = await useNavigation(route)
 const categoriesList = computed(() => categories.value.map((cat) => ({ name: cat, code: "A" })))
 const authorsList = computed(() => authors.value.map((auth) => ({ name: auth, code: "B" })))
 
-
+const submitFilters = () => {
+    filterOptions.value = filters.value
+    if (navigationList.value && navigationList.value[0]._path) {
+        navigateTo(navigationList.value[0]._path)
+    }
+    visible.value = false
+}
 </script>
