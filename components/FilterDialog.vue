@@ -50,7 +50,7 @@
                     </div>
                 </template>
             </Dropdown>
-            <Calendar class="w-full" v-model="buttondisplay" showIcon />
+            <Calendar class="w-full" v-model="publishedAt" showIcon />
         </div>
 
         <template #footer>
@@ -63,9 +63,10 @@
 
 <script setup lang="ts">
 const visible = defineModel({ type: Boolean });
+
 const selectedCountry = ref();
 const selectedAuthors = ref();
-const buttondisplay = ref();
+const publishedAt = ref();
 
 const route = useRoute()
 const { authors, categories, navigate, currentNav } = await useNavigation(undefined, route)
