@@ -1,20 +1,5 @@
 import type { RouteLocationNormalizedLoaded } from "vue-router";
 
-interface NavComponent {
-    title: string;
-    _path: string;
-    author?: string;
-    category?: string;
-    publishedAt?: string;
-    children?: NavComponent[];
-}
-
-interface FilterOptions {
-    author?: string | null;
-    category?: string | null;
-    date?: string | null;
-}
-
 export async function useNavigation(filterOptions:FilterOptions = { author: null, category: null, date: null },route:RouteLocationNormalizedLoaded) {
 
     const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
