@@ -1,40 +1,25 @@
 import type { RouteLocationNormalizedLoaded } from "vue-router";
 
-interface NavComponent {
-    title: string;
-    _path: string;
-    author?: string;
-    category?: string;
-    publishedAt?: string;
-    children?: NavComponent[];
-}
+let initialFilterOptions:FilterOptions = { author: null, category: null, publishedAt: null, hasChildren: false }
 
-interface FilterOptions {
-    author?: string | null;
-    category?: string | null;
-    date?: string | null;
-}
+const filterOptions = ref<FilterOptions>(initialFilterOptions)
 
-export async function useNavigation(filterOptions:FilterOptions = { author: null, category: null, date: null },route:RouteLocationNormalizedLoaded) {
+export async function useNavigation(route:RouteLocationNormalizedLoaded) {
 
     const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 
-    const includeParents = ref(false);
-
-    const navigationList = computed(() => {
+    const flattenNavigationList = computed(()=>{
         const result: NavComponent[] = [];
         const uniquePaths = new Set();
 
-        function addItems(items: NavComponent[], isChild = false) {
+        function addItems(items: NavComponent[]) {
             items.forEach(item => {
-                if (matchesFilters(item, filterOptions) && !uniquePaths.has(item._path)) {
-                    if (item._path === "/" || includeParents.value || isChild) {
-                        result.push(item);
-                    }
+                if (!uniquePaths.has(item._path)) {
+                    result.push(item);
                     uniquePaths.add(item._path);
                 }
                 if (item.children) {
-                    addItems(item.children, true);
+                    addItems(item.children);
                 }
             });
         }
@@ -43,13 +28,35 @@ export async function useNavigation(filterOptions:FilterOptions = { author: null
             addItems(navigation.value);
         }
         return result;
-    });
+    })
 
-    function matchesFilters(item: NavComponent, options:FilterOptions): boolean {
-        return (!options.author || item.author === options.author) &&
-               (!options.category || item.category === options.category) &&
-               (!options.date || item.publishedAt === options.date);
-    }
+    const navigationList = computed(() => {
+        let navList:NavComponent[] = flattenNavigationList.value
+        let filters = filterOptions.value
+
+        return navList.filter(item => {
+            let matches = true;
+    
+            if (filters.author && item.author !== filters.author) {
+                matches = false;
+            }
+            if (filters.category && item.category !== filters.category) {
+                matches = false;
+            }
+            if (filters.publishedAt && item.publishedAt !== filters.publishedAt) {
+                matches = false;
+            }
+            if (typeof filters.hasChildren === 'boolean') {
+                const hasChildren = Boolean(item.children && item.children.length > 0)
+                if (filters.hasChildren !== hasChildren) {
+                    matches = false;
+                }
+            }
+    
+            return matches;
+        });
+
+    });
 
     const currentNav = computed(() => navigationList.value.find((item) => item._path === route.path));
     const currentNavIndex = computed(() => navigationList.value.findIndex((item) => item._path === route.path));
@@ -64,9 +71,21 @@ export async function useNavigation(filterOptions:FilterOptions = { author: null
         }
     }
 
+    const categories = computed(()=> {
+        let categories = flattenNavigationList.value.map((nav)=>nav.category).filter((cat)=>cat!==undefined)
+        return [...new Set(categories)]
+    })
+    const authors = computed(()=> {
+        let authors = flattenNavigationList.value.map((nav)=>nav.author).filter((cat)=>cat!==undefined)
+        return [...new Set(authors)]
+    })
+
     return {
         navigationList,
+        filterOptions,
         currentNav,
-        navigate
+        navigate,
+        categories,
+        authors
     };
 }
