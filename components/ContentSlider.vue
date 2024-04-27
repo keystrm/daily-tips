@@ -12,6 +12,6 @@
 <script setup lang="ts">
 
 const route = useRoute()
-const {navigate,currentNav} = await useNavigation(undefined,route)
+const {navigate,currentNav} = await useNavigation(route)
 
 </script>

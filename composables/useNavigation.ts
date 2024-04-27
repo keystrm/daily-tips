@@ -1,9 +1,11 @@
 import type { RouteLocationNormalizedLoaded } from "vue-router";
 
-export async function useNavigation(filterOptions:FilterOptions = { author: null, category: null, date: null },route:RouteLocationNormalizedLoaded) {
+export async function useNavigation(route:RouteLocationNormalizedLoaded) {
 
     const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
-
+    
+    let initialFilterOptions:FilterOptions = { author: null, category: null, date: null }
+    const filterOptions = reactive(initialFilterOptions)
     const includeParents = ref(false);
 
     const navigationList = computed(() => {
@@ -31,6 +33,7 @@ export async function useNavigation(filterOptions:FilterOptions = { author: null
     });
 
     function matchesFilters(item: NavComponent, options:FilterOptions): boolean {
+        console.log(options,item)
         return (!options.author || item.author === options.author) &&
                (!options.category || item.category === options.category) &&
                (!options.date || item.publishedAt === options.date);
@@ -60,6 +63,7 @@ export async function useNavigation(filterOptions:FilterOptions = { author: null
 
     return {
         navigationList,
+        filterOptions,
         currentNav,
         navigate,
         categories,
