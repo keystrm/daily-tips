@@ -6,7 +6,7 @@
             </div>
         </template>
         <div class="flex flex-col space-y-4 p-4 max-w-md mx-auto">
-            <Dropdown class="w-full" v-model="selectedCountry" :options="categoriesList" filter optionLabel="name"
+            <Dropdown class="w-full" v-model="selectedCategory" :options="categoriesList" filter optionLabel="name"
                 placeholder="Select a Category">
                 <template #value="slotProps">
                     <div v-if="slotProps.value" class="flex align-items-center">
@@ -64,14 +64,14 @@
 <script setup lang="ts">
 const visible = defineModel({ type: Boolean });
 
-const selectedCountry = ref();
+const selectedCategory = ref();
 const selectedAuthors = ref();
 const publishedAt = ref();
 
 const filters:ComputedRef<FilterOptions> = computed(()=>{
     return{
-        author:selectedCountry.value?.name??null,
-        category:selectedAuthors.value?.name??null,
+        author:selectedAuthors.value?.name??null,
+        category:selectedCategory.value?.name??null,
         date:publishedAt.value??null
     }
 })
