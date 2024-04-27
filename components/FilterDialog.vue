@@ -10,7 +10,7 @@
                 <span class="font-bold white-space-nowrap">Filters</span>
             </div>
         </template>
-        <ContributionGrid/>
+        <!-- <ContributionGrid/> -->
         <Dropdown v-model="selectedCountry" :options="countries" filter optionLabel="name"
             placeholder="Select a Country" class="w-full md:w-14rem">
             <template #value="slotProps">
