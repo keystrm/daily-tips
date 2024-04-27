@@ -21,20 +21,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        run: corepack enable
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'  # Setting Node.js version to 20 as used locally
           cache: 'pnpm'
 
-      - name: Install pnpm
-        run: corepack enable
-
       - name: Install Dependencies
         run: pnpm install
 
       - name: Generate Static Site with Nuxt
-        run: pnpm run generate
+        run: pnpm build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
