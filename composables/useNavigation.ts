@@ -64,9 +64,14 @@ export async function useNavigation(filterOptions:FilterOptions = { author: null
         }
     }
 
+    const categories = computed(()=> navigationList.value.map((nav)=>nav.category).filter((cat)=>cat!==undefined))
+    const authors = computed(()=> navigationList.value.map((nav)=>nav.author).filter((cat)=>cat!==undefined))
+
     return {
         navigationList,
         currentNav,
-        navigate
+        navigate,
+        categories,
+        authors
     };
 }
