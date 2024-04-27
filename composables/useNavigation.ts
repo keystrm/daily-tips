@@ -1,12 +1,12 @@
 import type { RouteLocationNormalizedLoaded } from "vue-router";
 
+let initialFilterOptions:FilterOptions = { author: null, category: null, publishedAt: null, hasChildren: false }
+
+const filterOptions = ref<FilterOptions>(initialFilterOptions)
+
 export async function useNavigation(route:RouteLocationNormalizedLoaded) {
 
     const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
-    
-    let initialFilterOptions:FilterOptions = { author: null, category: null, publishedAt: null, hasChildren: false }
-
-    const filterOptions = ref(initialFilterOptions)
 
     const flattenNavigationList = computed(()=>{
         const result: NavComponent[] = [];
@@ -31,22 +31,24 @@ export async function useNavigation(route:RouteLocationNormalizedLoaded) {
     })
 
     const navigationList = computed(() => {
-        let navList:NavComponent[] = JSON.parse(JSON.stringify(flattenNavigationList.value))
+        let navList:NavComponent[] = flattenNavigationList.value
+        let filters = filterOptions.value
+
         return navList.filter(item => {
             let matches = true;
     
-            if (filterOptions.value.author && item.author !== filterOptions.value.author) {
+            if (filters.author && item.author !== filters.author) {
                 matches = false;
             }
-            if (filterOptions.value.category && item.category !== filterOptions.value.category) {
+            if (filters.category && item.category !== filters.category) {
                 matches = false;
             }
-            if (filterOptions.value.publishedAt && item.publishedAt !== filterOptions.value.publishedAt) {
+            if (filters.publishedAt && item.publishedAt !== filters.publishedAt) {
                 matches = false;
             }
-            if (typeof filterOptions.value.hasChildren === 'boolean') {
+            if (typeof filters.hasChildren === 'boolean') {
                 const hasChildren = Boolean(item.children && item.children.length > 0)
-                if (filterOptions.value.hasChildren !== hasChildren) {
+                if (filters.hasChildren !== hasChildren) {
                     matches = false;
                 }
             }
