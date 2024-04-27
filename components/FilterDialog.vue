@@ -70,13 +70,16 @@ const publishedAt = ref();
 
 const filters:ComputedRef<FilterOptions> = computed(()=>{
     return{
-        author:selectedCountry.value?.name??undefined,
-        category:selectedAuthors.value?.name??undefined,
-        date:publishedAt.value??undefined
+        author:selectedCountry.value?.name??null,
+        category:selectedAuthors.value?.name??null,
+        date:publishedAt.value??null
     }
 })
+watch(filters,()=>{
+    filterOptions.value = filters.value
+})
 const route = useRoute()
-const { authors, categories, navigate, currentNav } = await useNavigation(route)
+const { authors, categories,filterOptions,navigate, currentNav } = await useNavigation(route)
 const categoriesList = computed(() => categories.value.map((cat) => ({ name: cat, code: "A" })))
 const authorsList = computed(() => authors.value.map((auth) => ({ name: auth, code: "B" })))
 

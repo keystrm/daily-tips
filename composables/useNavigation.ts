@@ -5,8 +5,30 @@ export async function useNavigation(route:RouteLocationNormalizedLoaded) {
     const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
     
     let initialFilterOptions:FilterOptions = { author: null, category: null, date: null }
-    const filterOptions = reactive(initialFilterOptions)
+    const filterOptions = ref(initialFilterOptions)
     const includeParents = ref(false);
+
+    const flattenNavigationList = computed(()=>{
+        const result: NavComponent[] = [];
+        const uniquePaths = new Set();
+
+        function addItems(items: NavComponent[]) {
+            items.forEach(item => {
+                if (!uniquePaths.has(item._path)) {
+                    result.push(item);
+                    uniquePaths.add(item._path);
+                }
+                if (item.children) {
+                    addItems(item.children);
+                }
+            });
+        }
+
+        if (navigation.value) {
+            addItems(navigation.value);
+        }
+        return result;
+    })
 
     const navigationList = computed(() => {
         const result: NavComponent[] = [];
@@ -14,7 +36,7 @@ export async function useNavigation(route:RouteLocationNormalizedLoaded) {
 
         function addItems(items: NavComponent[], isChild = false) {
             items.forEach(item => {
-                if (matchesFilters(item, filterOptions) && !uniquePaths.has(item._path)) {
+                if (matchesFilters(item, filterOptions.value) && !uniquePaths.has(item._path)) {
                     if (item._path === "/" || includeParents.value || isChild) {
                         result.push(item);
                     }
@@ -33,7 +55,6 @@ export async function useNavigation(route:RouteLocationNormalizedLoaded) {
     });
 
     function matchesFilters(item: NavComponent, options:FilterOptions): boolean {
-        console.log(options,item)
         return (!options.author || item.author === options.author) &&
                (!options.category || item.category === options.category) &&
                (!options.date || item.publishedAt === options.date);
@@ -53,11 +74,11 @@ export async function useNavigation(route:RouteLocationNormalizedLoaded) {
     }
 
     const categories = computed(()=> {
-        let categories = navigationList.value.map((nav)=>nav.category).filter((cat)=>cat!==undefined)
+        let categories = flattenNavigationList.value.map((nav)=>nav.category).filter((cat)=>cat!==undefined)
         return [...new Set(categories)]
     })
     const authors = computed(()=> {
-        let authors = navigationList.value.map((nav)=>nav.author).filter((cat)=>cat!==undefined)
+        let authors = flattenNavigationList.value.map((nav)=>nav.author).filter((cat)=>cat!==undefined)
         return [...new Set(authors)]
     })
 
