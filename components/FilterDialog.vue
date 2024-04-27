@@ -7,7 +7,7 @@
         </template>
         <div class="flex flex-col space-y-4 p-4 max-w-md mx-auto">
             <Dropdown class="w-full" v-model="selectedCountry" :options="categoriesList" filter optionLabel="name"
-                placeholder="Select a Country">
+                placeholder="Select a Category">
                 <template #value="slotProps">
                     <div v-if="slotProps.value" class="flex align-items-center">
                         <img :alt="slotProps.value.label"
