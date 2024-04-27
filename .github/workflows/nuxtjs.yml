@@ -34,7 +34,7 @@ jobs:
         run: pnpm install
 
       - name: Generate Static Site with Nuxt
-        run: pnpm build
+        run: pnpm run generate
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
