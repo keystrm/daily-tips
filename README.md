@@ -59,6 +59,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Contact
 
-If you have any questions, suggestions, or just want to say hi, feel free to contact us at [keystrmpro@example.com](mailto:keystrmpro@gmail.com).
+If you have any questions, suggestions, or just want to say hi, feel free to contact us at [keystrmpro@gmail.com](mailto:keystrmpro@gmail.com).
 
 Happy Learning!
